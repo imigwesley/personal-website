@@ -1,22 +1,38 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './Home.scss'
 
 const Home = () => {
   const textRef = useRef(null);
-  const [isEmailHovered, SetIsEmailHovered] = useState(false);
+  const [isEmailHovered, setIsEmailHovered] = useState(false);
+  const [isEmailHighlighted, setIsEmailHighlighted] = useState(false);
 
-  const handleMouseEnter = () => {
-    SetIsEmailHovered(true);
-  };
-  
-  const handleMouseLeave = () => {
-    const highlighted = window.getSelection();
-    if (!highlighted.toString()) {
-      // email not highlighted
-      SetIsEmailHovered(false);
+  const handleHighlighted = () => {
+    const selectedText = window.getSelection().toString();
+    if ("imig.wa03@gmail.com".includes(selectedText)) {
+      setIsEmailHighlighted(true);
     }
   };
 
+  const handleMouseEnter = () => {
+    setIsEmailHovered(true);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsEmailHovered(false);
+  };
+
+  useEffect(() => {
+    const handleMouseUp = () => {
+      const selectedText = window.getSelection().toString();
+      if (!selectedText) {
+        setIsEmailHighlighted(false);
+      }
+    };
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, []);
 
   return (
     <div>
@@ -29,8 +45,8 @@ const Home = () => {
             </div>
               <div className='contacts'>
                 <h>
-                  <h onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={textRef}>
-                    {isEmailHovered? 'imig.wa03@gmail.com -' : 'email -'}
+                  <h onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={textRef} onMouseUp={handleHighlighted}>
+                    {isEmailHovered || isEmailHighlighted ? 'imig.wa03@gmail.com -' : 'email -'}
                   </h>
     &nbsp;
                   <a href='https://www.w3schools.com/cssref/index.php' target='blank' >css thing</a>

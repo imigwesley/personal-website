@@ -7,8 +7,8 @@ import Resume from './pages/Resume';
 function App() {
   return (
     <div>
-      {/* <Home /> */}
-      <Resume/>
+      <Home />
+      {/* <Resume/> */}
     </div>
   );
 }
