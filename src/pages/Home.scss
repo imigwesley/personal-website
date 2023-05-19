@@ -1,0 +1,34 @@
+.centering-div {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.all-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.name-contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 275px; /* CHANGE ME */
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.contacts {
+  white-space: nowrap;
+}
+
+.pages-menu {
+  display: flex;
+  flex-direction: column;
+}
