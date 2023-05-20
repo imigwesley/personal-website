@@ -1,5 +1,17 @@
 @import "src/fonts/fonts.scss";
 
+.duck {
+  width: 86px;
+  height: 131px;
+  background-image: url("../images/bird-dance.gif");
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: 1s linear infinite;
+}
+
 .centering-div {
   height: 100vh;
   display: flex;

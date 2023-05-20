@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './Home.scss'
 
 const Home = () => {
@@ -6,6 +6,24 @@ const Home = () => {
   const [isEmailHovered, setIsEmailHovered] = useState(false);
   const [isGithubHovered, setIsGithubHovered] = useState(false);
   const [isGoodreadsHovered, setIsGoodreadsHovered] = useState(false);
+  const mousePosition = useRef({ x: 0, y: 0 });
+  const delayedMousePosition = useRef({ x: 0, y: 0 });
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      delayedMousePosition.current = mousePosition.current;
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleMouseMove = (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
+    mousePosition.current = { x, y };
+  };
+
 
   function handleMouseEnter() {
     setIsEmailHovered(true);
@@ -17,7 +35,8 @@ const Home = () => {
 
   return (
     <div>
-      <div className='centering-div'>
+      <div className='centering-div' onMouseMove={handleMouseMove}>
+        <div className='duck' style={{left: delayedMousePosition.current.x, top: delayedMousePosition.current.y}}/>
         <div className='center-container'>
           <div className='name-and-contacts'>
             <div className='name'>
