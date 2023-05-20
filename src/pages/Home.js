@@ -1,66 +1,47 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import './Home.scss'
 
 const Home = () => {
   const textRef = useRef(null);
   const [isEmailHovered, setIsEmailHovered] = useState(false);
-  const [isEmailHighlighted, setIsEmailHighlighted] = useState(false);
+  const [isGithubHovered, setIsGithubHovered] = useState(false);
+  const [isGoodreadsHovered, setIsGoodreadsHovered] = useState(false);
 
-  const handleHighlighted = () => {
-    const selectedText = window.getSelection().toString();
-    if ("imig.wa03@gmail.com".includes(selectedText)) {
-      setIsEmailHighlighted(true);
-    }
-  };
-
-  const handleMouseEnter = () => {
+  function handleMouseEnter() {
     setIsEmailHovered(true);
   };
   
-  const handleMouseLeave = () => {
+  function handleMouseLeave() {
     setIsEmailHovered(false);
   };
-
-  useEffect(() => {
-    const handleMouseUp = () => {
-      const selectedText = window.getSelection().toString();
-      if (!selectedText) {
-        setIsEmailHighlighted(false);
-      }
-    };
-    window.addEventListener('mouseup', handleMouseUp);
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
 
   return (
     <div>
       <div className='centering-div'>
-        <div className='all-container'>
-          <div className='name-contacts'>
+        <div className='center-container'>
+          <div className='name-and-contacts'>
             <div className='name'>
-              <h1>Wesley</h1>
-              <h1>Imig</h1>
+              <div className='name-word'>Wesley</div>
+              <div className='name-word'>Imig</div>
             </div>
-              <div className='contacts'>
-                <h>
-                  <h onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={textRef} onMouseUp={handleHighlighted}>
-                    {isEmailHovered || isEmailHighlighted ? 'imig.wa03@gmail.com -' : 'email -'}
-                  </h>
-    &nbsp;
-                  <a href='https://www.w3schools.com/cssref/index.php' target='blank' >css thing</a>
-                  &nbsp;- github
-                  - goodreads
-                </h>
-                </div>
+            <div className='links'>
+              <span>
+                <a className='link' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={textRef} href='mailto:imig.wa03@gmail.com' target='blank'>
+                  {isEmailHovered ? 'imig.wa03@gmail.com' : 'email'}
+                </a>
+                <h> - </h>
+                <a className='link' href='https://github.com/imigwesley' target='blank'>github</a>
+                <h> - </h>
+                <a className='link' href='https://google.com' target='blank'>goodreads</a>
+              </span>
+            </div>
           </div>
           <hr className='divider'/>
           <div className='pages-menu'>
-            <h2>About Me</h2>
-            <h2>Resume</h2>
-            <h2>Personal Projects</h2>
-            <h2>Experience</h2>
+            <div>About Me</div>
+            <div>Resume</div>
+            <div>Experience</div>
+            <div>Projects</div>
           </div>
         </div>
       </div>

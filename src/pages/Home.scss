@@ -1,34 +1,72 @@
+@import "src/fonts/fonts.scss";
+
 .centering-div {
   height: 100vh;
   display: flex;
   align-items: center;
+  font-family: euphemia;
 }
 
-.all-container {
+.center-container {
   display: flex;
-  flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 32vw;
+  gap: 2vw;
+  width: fit-content;
 }
 
-.name-contacts {
+.name-and-contacts {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  max-width: 275px; /* CHANGE ME */
+  max-width: 181.58px; /* CHANGE ME */
+  gap: 4vh;
 }
 
 .name {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  font-weight: 100;
+  font-size: 63px;
 }
 
-.contacts {
+.name-word {
+  height: 75px;
+}
+
+.links {
   white-space: nowrap;
+  font-size: 18px;
+  margin-bottom: 2vh;
+}
+
+.divider {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .pages-menu {
   display: flex;
   flex-direction: column;
+  align-self: center;
+  font-size: 30px;
+  gap: 1vh;
+}
+
+.link {
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 0.55;
+  text-decoration: underline;
+}
+
+.link:visited {
+  color: #0000EE;
+}
+
+.link:active {
+  color: black;
 }
