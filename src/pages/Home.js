@@ -39,9 +39,9 @@ const Home = () => {
           <hr className='divider'/>
           <div className='pages-menu'>
             <div>About Me</div>
-            <div>Resume</div>
             <div>Experience</div>
             <div>Projects</div>
+            <div>Resume</div>
           </div>
         </div>
       </div>
